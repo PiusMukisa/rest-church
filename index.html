@@ -98,7 +98,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image:url('images/nathan-mullet-pmiW630yDPE-unsplash.jpg');
             background-attachment: fixed;
             color: white;
             text-align: center;
@@ -259,14 +259,14 @@
         }
 
         .about-image {
-            background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 20px;
             height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            overflow: hidden;
+        }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Values Section */
@@ -321,6 +321,28 @@
             justify-content: center;
             color: white;
             font-size: 2rem;
+        }
+
+        .sermon-video-link {
+            display: block;
+            position: relative;
+        }
+
+        .play-icon-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
+        }
+
+        .sermon-video-link:hover .play-icon-overlay {
+            background: rgba(0,0,0,0.5);
         }
 
         .sermon-info {
@@ -689,14 +711,7 @@
     </style>
 </head>
 <body>
-    <!-- Live Stream Banner -->
-    <div class="live-banner">
-        <span class="live-dot"></span>
-        <strong>LIVE NOW:</strong> Sunday Service - Join us online! 
-        <a href="#" style="color: white; text-decoration: underline; margin-left: 10px;">Watch Live</a>
-    </div>
-
-    <!-- Header -->
+    
     <header>
         <div class="header-container">
             <a href="#" class="logo">
@@ -722,7 +737,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Rest Church</h1>
+            <h1>Welcome to Our Channel</h1>
             <p class="subtitle">Making disciples who love God, love people, and transform communities</p>
             <div class="cta-buttons">
                 <a href="#about" class="cta-button cta-primary">Discover Our Story</a>
@@ -737,13 +752,13 @@
             <div class="service-time">
                 <i class="fas fa-sun"></i>
                 <h3>Sunday Morning</h3>
-                <p>9:00 AM & 11:00 AM</p>
+                <p>8:30 AM & 11:00 AM</p>
                 <p>In-Person & Online</p>
             </div>
             <div class="service-time">
                 <i class="fas fa-moon"></i>
-                <h3>Wednesday Evening</h3>
-                <p>7:00 PM</p>
+                <h3>Thursday Evening</h3>
+                <p>5:30 PM</p>
                 <p>Bible Study & Prayer</p>
             </div>
             <div class="service-time">
@@ -770,7 +785,7 @@
                         <p>Our vision is to be a beacon of hope and a place of rest for all who seek spiritual nourishment. Join us as we journey together in faith, hope, and love, discovering the joy of a life dedicated to Christ.</p>
                     </div>
                     <div class="about-image">
-                        <i class="fas fa-church"></i>
+                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="About Rest Church">
                     </div>
                 </div>
 
@@ -805,13 +820,19 @@
 
                 <!-- Featured Sermon -->
                 <div class="sermon-featured fade-in">
-                    <div class="sermon-video">
-                        <i class="fas fa-play-circle" style="font-size: 4rem; cursor: pointer;"></i>
-                    </div>
+                    <a href="https://www.youtube.com/watch?v=your_video_id" target="_blank" class="sermon-video-link">
+                        <div class="sermon-video">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_f7731583.jpg" alt="Finding Peace in Troubled Times" style="width:100%; height:100%; object-fit:cover;">
+                            <div class="play-icon-overlay">
+                                <i class="fas fa-play-circle" style="font-size: 5rem; color: white; opacity: 0.8;"></i>
+                            </div>
+                        </div>
+                    </a>
                     <div class="sermon-info">
-                        <h3>Finding Peace in Troubled Times</h3>
+                        <h3>On Covenant </h3>
                         <p>Pastor Muwayi Faizo • December 15, 2024</p>
                         <p>Discover how God's peace can guard your heart and mind, even in life's most challenging seasons.</p>
+                        <a href="https://www.youtube.com/watch?v=your_video_id" target="_blank" class="cta-button cta-primary" style="margin-top: 1rem;">Watch Now</a>
                     </div>
                 </div>
 
@@ -903,22 +924,7 @@
                                 <span><i class="fas fa-hands-helping"></i> Service Projects</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="event-card">
-                        <div class="event-date">
-                            <div style="font-size: 2rem;">22</div>
-                            <div>JAN</div>
-                        </div>
-                        <div class="event-content">
-                            <h3>Baptism Sunday</h3>
-                            <p>Celebrate with those taking their next step in faith through baptism.</p>
-                            <div class="event-meta">
-                                <span><i class="fas fa-clock"></i> During Morning Service</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Main Sanctuary</span>
-                                <span><i class="fas fa-water"></i> Baptism Celebration</span>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -1033,24 +1039,24 @@
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
                     <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            <i class="fas fa-user"></i>
+                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.50_eea8b860.jpg" alt="Pastor John Smith" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Pastor John Smith</h3>
                         <p style="color: #ff7f50; margin-bottom: 1rem;">Lead Pastor</p>
                         <p style="color: #666;">Passionate about helping people discover their purpose in Christ and building authentic community.</p>
                     </div>
                     <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            <i class="fas fa-user"></i>
+                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.51_ea37b096.jpg" alt="Sarah Johnson" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Sarah Johnson</h3>
                         <p style="color: #ff7f50; margin-bottom: 1rem;">Worship Pastor</p>
                         <p style="color: #666;">Leading our community in heartfelt worship and creating environments where people encounter God.</p>
                     </div>
                     <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
-                            <i class="fas fa-user"></i>
+                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="Mike Davis" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Mike Davis</h3>
                         <p style="color: #ff7f50; margin-bottom: 1rem;">Youth Pastor</p>
@@ -1070,8 +1076,8 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <div class="fade-in" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                            <div style="width: 50px; height: 50px; background: #ff7f50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem;">
-                                <i class="fas fa-user"></i>
+                            <div style="width: 50px; height: 50px; background: #ff7f50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem; overflow: hidden;">
+                                <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_551448d1.jpg" alt="Jennifer Martinez" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
                                 <h4>Jennifer Martinez</h4>
@@ -1231,74 +1237,6 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We\'ll get back to you soon.');
-            this.reset();
-        });
-
-        // Mobile menu toggle (basic implementation)
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const nav = document.querySelector('nav ul');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Sermon video play button
-        document.querySelector('.sermon-video i').addEventListener('click', function() {
-            alert('Video player would open here. Connect to your video hosting service.');
-        });
-
-        // Live banner interaction
-        document.querySelector('.live-banner a').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Live stream would open here. Connect to your streaming service.');
-        });
-    </script>
+    <script src="script/scripts.js"></script>
 </body>
 </html>
