@@ -53,14 +53,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile menu toggle (basic implementation)
+    // Mobile menu toggle
     const mobileMenu = document.querySelector('.mobile-menu');
+    const nav = document.querySelector('nav ul');
+    const menuIcon = document.querySelector('.mobile-menu .fa-bars');
+    const closeIcon = document.querySelector('.mobile-menu .fa-times');
+
     if (mobileMenu) {
         mobileMenu.addEventListener('click', function() {
-            const nav = document.querySelector('nav ul');
-            if (nav) {
-                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            }
+            nav.classList.toggle('active');
+            const isActive = nav.classList.contains('active');
+            menuIcon.style.display = isActive ? 'none' : 'block';
+            closeIcon.style.display = isActive ? 'block' : 'none';
         });
+    }
+
+    // Live Stream Logic
+    
+    const YOUTUBE_CHANNEL_ID = 'UC_5R-gBOWKGdi9tgGjZWwVA';
+    const livePlayerContainer = document.getElementById('live-player-container');
+
+    if (livePlayerContainer) {
+        // This will always attempt to load the live stream.
+        // If you are live, the video will play.
+        // If you are not live, YouTube will show a "Waiting for..." message.
+        livePlayerContainer.innerHTML = `
+            <iframe
+                id="live-player"
+                src="https://www.youtube.com/embed/live_stream?channel=${YOUTUBE_CHANNEL_ID}&autoplay=1&mute=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>`;
     }
 });

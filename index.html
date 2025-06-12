@@ -54,6 +54,11 @@
             color: #ff7f50;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
@@ -629,7 +634,34 @@
             }
 
             nav ul {
-                display: none;
+               display: none;
+               flex-direction: column;
+               position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100vh;
+               background: rgba(44, 85, 48, 0.95);
+               backdrop-filter: blur(10px);
+               align-items: center;
+               justify-content: center;
+               gap: 2.5rem;
+               z-index: 1001;
+               transform: translateY(-100%);
+               transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            }
+
+            nav ul.active {
+               transform: translateY(0);
+            }
+
+            nav ul li a {
+               color: white;
+               font-size: 2rem;
+            }
+
+            .mobile-menu {
+               z-index: 1002;
             }
 
             .hero h1 {
@@ -652,6 +684,7 @@
             }
 
             .header-container {
+                display: flex;
                 padding: 1rem;
             }
         }
@@ -708,6 +741,100 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+
+        /* Leadership Section */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .leader-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .leader-info {
+            padding: 2rem;
+        }
+
+        .leader-info h3 {
+            color: #2c5530;
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .leader-title {
+            color: #ff7f50;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Live Section */
+        .live-section {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .live-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #live-player-container {
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 2rem;
+            box-shadow: 0 10px 50px rgba(255, 127, 80, 0.2);
+        }
+
+        #live-player {
+            aspect-ratio: 16/9;
+            width: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -723,13 +850,17 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#sermons">Sermons</a></li>
+                    <li><a href="#live">Live</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#ministries">Ministries</a></li>
+                    <li><a href="#leadership">Leadership</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu">
                 <i class="fas fa-bars"></i>
+                <i class="fas fa-times" style="display: none;"></i>
             </button>
         </div>
     </header>
@@ -868,6 +999,19 @@
                             <small>September 2024</small>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Section -->
+        <section id="live" class="section live-section">
+            <div class="live-container">
+                <div class="section-title fade-in">
+                    <h2 style="color: #ff7f50;">Watch Us Live</h2>
+                    <p style="color: #ccc;">Join our service from anywhere in the world. We are live every Sunday!</p>
+                </div>
+                <div id="live-player-container">
+                    <!-- Live stream will be embedded here -->
                 </div>
             </div>
         </section>
@@ -1030,37 +1174,33 @@
             </div>
         </section>
 
-        <!-- Staff Section -->
-        <section class="section" style="background: white;">
+        <!-- Leadership Section -->
+        <section id="leadership" class="section" style="background: #f8f9fa;">
             <div class="container">
                 <div class="section-title fade-in">
-                    <h2>Meet Our Team</h2>
-                    <p>Passionate leaders dedicated to serving God and our community</p>
+                    <h2>Meet Our Leadership</h2>
+                    <p>Guiding our church with wisdom and passion.</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.50_eea8b860.jpg" alt="Pastor John Smith" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="leadership-grid">
+                    <div class="leader-card fade-in">
+                        <div class="leader-image">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_f7731583.jpg"alt="Lead Pastor">
                         </div>
-                        <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Pastor John Smith</h3>
-                        <p style="color: #ff7f50; margin-bottom: 1rem;">Lead Pastor</p>
-                        <p style="color: #666;">Passionate about helping people discover their purpose in Christ and building authentic community.</p>
+                        <div class="leader-info">
+                            <h3>Pastor Muwayi Faizo</h3>
+                            <p class="leader-title">Lead Pastor & Vision Bearer</p>
+                            <p>Pastor Faizo is passionate about sharing the gospel and leading people into a deeper relationship with Jesus Christ. His vision is to see a church that is a family, deeply rooted in the Word, and actively transforming the community.</p>
+                        </div>
                     </div>
-                    <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.51_ea37b096.jpg" alt="Sarah Johnson" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="leader-card fade-in">
+                        <div class="leader-image">
+                            <img src="images/WhatsApp Image 2025-06-12 at 11.51.49_d8ef2417.jpg" alt="Our Vision">
                         </div>
-                        <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Sarah Johnson</h3>
-                        <p style="color: #ff7f50; margin-bottom: 1rem;">Worship Pastor</p>
-                        <p style="color: #666;">Leading our community in heartfelt worship and creating environments where people encounter God.</p>
-                    </div>
-                    <div class="fade-in" style="text-align: center; background: #f8f9fa; padding: 2rem; border-radius: 15px;">
-                        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; overflow: hidden;">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="Mike Davis" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="leader-info">
+                            <h3>Our Vision</h3>
+                            <p class="leader-title">Making Disciples Who Transform Communities</p>
+                            <p>We aim to be a beacon of hope, a place of rest, and a center for spiritual growth. Our focus is on raising disciples who are empowered to make a difference in every sphere of life, reflecting God's love and glory.</p>
                         </div>
-                        <h3 style="color: #2c5530; margin-bottom: 0.5rem;">Mike Davis</h3>
-                        <p style="color: #ff7f50; margin-bottom: 1rem;">Youth Pastor</p>
-                        <p style="color: #666;">Empowering the next generation to live boldly for Christ and make a difference in their world.</p>
                     </div>
                 </div>
             </div>
@@ -1109,6 +1249,30 @@
                             </div>
                         </div>
                         <p style="font-style: italic;">"As a new believer, I was welcomed with open arms. The discipleship program helped me understand my faith and grow spiritually."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2>Moments at Rest Church</h2>
+                    <p>A glimpse into our vibrant community life and worship.</p>
+                </div>
+                <div class="gallery-grid fade-in">
+                    <div class="gallery-item">
+                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_f7731583.jpg" alt="Gallery Image 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_551448d1.jpg" alt="Gallery Image 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="Gallery Image 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.51_ea37b096.jpg" alt="Gallery Image 4">
                     </div>
                 </div>
             </div>
@@ -1220,7 +1384,7 @@
                 <h3>Connect</h3>
                 <p>123 Community Lane<br>Kampala, Central Region, Uganda</p>
                 <p>Phone: +256 123 456 789</p>
-                <p>Email: info@restchurch.ug</p>
+                <p>Email: restchurch37@gmail.com</p>
             </div>
         </div>
         
