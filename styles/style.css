@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #333;
+}
+
+header {
+    background: #fff;
+    color: #333;
+    border-bottom: 1px solid #eaeaea;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-right: 20px;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hero {
+    background: url('https://www.crosswalk.com/blogs/christian-trends/what-is-the-purpose-of-the-church.html') no-repeat center center/cover;
+    color: #fff;
+    padding: 6rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero > * {
+    z-index: 2;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #ff7f50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.latest-sermon, .upcoming-events {
+    background: #f9f9f9;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sermon-video {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+    border-top: 1px solid #eaeaea;
+}
+
+footer a {
+    color: #ff7f50;
+}
