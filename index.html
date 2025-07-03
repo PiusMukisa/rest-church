@@ -180,34 +180,25 @@
 
         .cta-button {
             display: inline-block;
-            padding: 15px 30px;
-            text-decoration: none;
+            padding: 12px 28px;
             border-radius: 50px;
+            background: #ff7f50;
+            color: #fff;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            margin-top: 0.5rem;
+        }
+
+        .cta-button:hover, .cta-primary:hover {
+            background: #ff6b35;
+            color: #fff;
+            transform: translateY(-2px) scale(1.03);
         }
 
         .cta-primary {
-            background: #ff7f50;
-            color: white;
-        }
-
-        .cta-primary:hover {
-            background: #ff6b35;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 127, 80, 0.3);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: white;
-            border-color: white;
-        }
-
-        .cta-secondary:hover {
-            background: white;
-            color: #667eea;
+            background: linear-gradient(90deg, #ff7f50 60%, #ff6b35 100%);
         }
 
         /* Service Times Banner */
@@ -484,19 +475,20 @@
             padding: 2rem;
             border-radius: 15px;
             background: #f8f9fa;
-            transition: all 0.3s ease;
+            transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.3s;
+            box-shadow: 0 2px 12px rgba(44,85,48,0.06);
+            will-change: transform;
         }
 
         .ministry-card:hover {
             background: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.13), 0 2px 12px rgba(44,85,48,0.08);
+            transform: scale(1.07) rotate(-2deg);
+            z-index: 2;
         }
 
-        .ministry-card i {
-            font-size: 3rem;
-            color: #ff7f50;
-            margin-bottom: 1rem;
+        .ministry-card:active {
+            transform: scale(0.97) rotate(0deg);
         }
 
         /* Contact Section */
@@ -759,7 +751,6 @@
             display: inline-block;
             width: 10px;
             height: 10px;
-            background: white;
             border-radius: 50%;
             margin-right: 10px;
             animation: pulse 1s infinite;
@@ -877,6 +868,99 @@
                 max-height: 48px;
             }
         }
+        .give-section {
+    position: relative;
+    min-height: 700px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 60%, #ff7f50 100%);
+    background-blend-mode: overlay;
+    color: white;
+    overflow: hidden;
+    z-index: 1;
+}
+.give-bg-shapes {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    filter: blur(2px);
+    animation: float 8s ease-in-out infinite alternate;
+}
+.shape1 {
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, #ff7f50 0%, #ff7f5000 80%);
+    top: 10%; left: 8%;
+    animation-delay: 0s;
+}
+.shape2 {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, #2c5530 0%, #2c553000 80%);
+    top: 60%; left: 80%;
+    animation-delay: 2s;
+}
+.shape3 {
+    width: 90px; height: 90px;
+    background: radial-gradient(circle, #fff 0%, #fff0 80%);
+    top: 75%; left: 20%;
+    animation-delay: 4s;
+}
+@keyframes float {
+    0% { transform: translateY(0) scale(1);}
+    100% { transform: translateY(-30px) scale(1.1);}
+}
+.give-form-wrapper {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.13);
+    box-shadow: 0 8px 32px rgba(44,85,48,0.15), 0 0 0 8px rgba(255,127,80,0.08);
+    border: 1.5px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+    max-width: 440px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s;
+    /* Add a subtle glow */
+    box-shadow: 0 0 32px 0 rgba(255,127,80,0.15), 0 8px 32px rgba(44,85,48,0.10);
+}
+.give-form h3 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #ff7f50;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+.give-form input,
+.give-form select {
+    background: rgba(255,255,255,0.97);
+    border: 1.5px solid #eee;
+    box-shadow: 0 2px 8px rgba(44,85,48,0.04);
+    transition: border 0.2s;
+}
+.give-form input:focus,
+.give-form select:focus {
+    border: 1.5px solid #ff7f50;
+    outline: none;
+}
+.cta-button.cta-primary {
+    background: linear-gradient(90deg, #ff7f50 60%, #ff6b35 100%);
+    box-shadow: 0 4px 16px rgba(255,127,80,0.18);
+    border: none;
+}
+.cta-button.cta-primary:hover {
+    background: linear-gradient(90deg, #ff6b35 60%, #ff7f50 100%);
+    box-shadow: 0 8px 32px rgba(255,127,80,0.22);
+}
+@media (max-width: 600px) {
+    .give-form-wrapper {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+}
     </style>
 </head>
 <body>
@@ -992,9 +1076,9 @@
 
                 <!-- Featured Sermon -->
                 <div class="sermon-featured fade-in">
-                    <a href="https://www.youtube.com/watch?v=your_video_id" target="_blank" class="sermon-video-link">
+                    <a href="https://www.youtube.com/watch?v=OcOB3TEjjA8" target="_blank" class="sermon-video-link">
                         <div class="sermon-video">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_f7731583.jpg" alt="Finding Peace in Troubled Times" style="width:100%; height:100%; object-fit:cover;">
+                            <img src="images/image-sum34.jpg" alt="Finding Peace in Troubled Times" style="width:100%; height:100%; object-fit:cover;">
                             <div class="play-icon-overlay">
                                 <i class="fas fa-play-circle" style="font-size: 5rem; color: white; opacity: 0.8;"></i>
                             </div>
@@ -1004,7 +1088,7 @@
                         <h3>On Covenant </h3>
                         <p>Pastor Muwayi Faizo • December 15, 2024</p>
                         <p>Discover how God's peace can guard your heart and mind, even in life's most challenging seasons.</p>
-                        <a href="https://www.youtube.com/watch?v=your_video_id" target="_blank" class="cta-button cta-primary" style="margin-top: 1rem;">Watch Now</a>
+                        <a href="https://www.youtube.com/watch?v=OcOB3TEjjA8" target="_blank" class="cta-button cta-primary" style="margin-top: 1rem;">Watch Now</a>
                     </div>
                 </div>
 
@@ -1090,8 +1174,8 @@
                             <h3>New Year's Prayer Night</h3>
                             <p>Start the new year with prayer, worship, and setting spiritual goals together.</p>
                             <div class="event-meta">
-                                <span><i class="fas fa-clock"></i> 10:00 PM - 12:30 AM</span>
-                                <span><i class="fas fa-map-marker-alt"></i> Fellowship Hall</span>
+                                <span><i class="fas fa-clock"></i>8:00 PM - 12:30 AM</span>
+                                <span><i class="fas fa-map-marker-alt"></i> Rest Church Land </span>
                                 <span><i class="fas fa-coffee"></i> Light Refreshments</span>
                             </div>
                         </div>
@@ -1102,12 +1186,12 @@
                             <div>JAN</div>
                         </div>
                         <div class="event-content">
-                            <h3>Community Service Day</h3>
+                            <h3>Easter Sunday</h3>
                             <p>Partner with local organizations to serve our community and show God's love in action.</p>
                             <div class="event-meta">
-                                <span><i class="fas fa-clock"></i> 9:00 AM - 3:00 PM</span>
+                                <span><i class="fas fa-clock"></i> 8:00 AM - 12:00 PM</span>
                                 <span><i class="fas fa-map-marker-alt"></i> Various Locations</span>
-                                <span><i class="fas fa-hands-helping"></i> Service Projects</span>
+                                <span><i class="fas fa-hands-helping"></i> Thanking Christ For Realving To Us Salvation</span>
                             </div>
                         </div>
                     
@@ -1125,12 +1209,18 @@
                 <div class="ministries-grid fade-in">
                     <div class="ministry-card">
                         <i class="fas fa-child"></i>
-                        <h3>Kids Ministry</h3>
+                        <h3>
+        <a href="kids-ministry.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">Kids Ministry</a>
+    </h3>
                         <p>Age-appropriate learning and fun activities for children from nursery through elementary.</p>
                     </div>
                     <div class="ministry-card">
                         <i class="fas fa-users"></i>
-                        <h3>Youth Ministry</h3>
+                        <h3>
+        <a href="youth-ministry.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">
+            Youth Ministry
+        </a>
+    </h3>
                         <p>Middle and high school students growing together in faith, friendship, and purpose.</p>
                     </div>
                     <div class="ministry-card">
@@ -1140,7 +1230,11 @@
                     </div>
                     <div class="ministry-card">
                         <i class="fas fa-music"></i>
-                        <h3>Worship Team</h3>
+                        <h3>
+        <a href="worship-team.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">
+            Worship Team
+        </a>
+    </h3>
                         <p>Musicians and vocalists leading our congregation in heartfelt worship and praise.</p>
                     </div>
                     <div class="ministry-card">
@@ -1150,17 +1244,29 @@
                     </div>
                     <div class="ministry-card">
                         <i class="fas fa-heart"></i>
-                        <h3>Women's Ministry</h3>
+                        <h3>
+        <a href="womens-ministry.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">
+            Women's Ministry
+        </a>
+    </h3>
                         <p>Encouraging women to grow in faith through Bible studies, retreats, and fellowship events.</p>
                     </div>
                     <div class="ministry-card">
                         <i class="fas fa-tools"></i>
-                        <h3>Men's Ministry</h3>
+                        <h3>
+        <a href="mens-ministry.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">
+            Men's Ministry
+        </a>
+    </h3>
                         <p>Building strong Christian men through accountability, service projects, and spiritual growth.</p>
                     </div>
                     <div class="ministry-card">
                         <i class="fas fa-globe"></i>
-                        <h3>Missions</h3>
+                        <h3>
+        <a href="missions.html" class="cta-button cta-primary" style="display:inline-block;margin-bottom:0.5rem;">
+            Missions
+        </a>
+    </h3>
                         <p>Supporting global missions and local evangelism to spread the Gospel worldwide.</p>
                     </div>
                 </div>
@@ -1168,35 +1274,73 @@
         </section>
 
         <!-- Giving Section -->
-        <section class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <div class="container">
+        <section id="give" class="section give-section" style="background: none; color: white; position: relative; overflow: hidden;">
+    <!-- Decorative SVG wave top -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; z-index: 1; pointer-events: none;">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px;display:block;">
+            <path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
+    <!-- Animated floating shapes -->
+    <div class="give-bg-shapes">
+        <span class="shape shape1"></span>
+        <span class="shape shape2"></span>
+        <span class="shape shape3"></span>
+    </div>
+    <div class="container" style="position: relative; z-index: 2;">
                 <div class="section-title fade-in" style="color: white;">
                     <h2>Give Online</h2>
                     <p style="color: rgba(255,255,255,0.9);">Your generosity helps us fulfill our mission to make disciples and serve our community</p>
                 </div>
-                <div style="text-align: center;">
-                    <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 3rem; border-radius: 20px; max-width: 600px; margin: 0 auto;">
-                        <h3 style="margin-bottom: 1.5rem; color: #ff7f50;">Ways to Give</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                            <div style="text-align: center;">
-                                <i class="fas fa-credit-card" style="font-size: 2rem; color: #ff7f50; margin-bottom: 0.5rem;"></i>
-                                <p>Online Giving</p>
-                            </div>
-                            <div style="text-align: center;">
-                                <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #ff7f50; margin-bottom: 0.5rem;"></i>
-                                <p>Text to Give</p>
-                            </div>
-                            <div style="text-align: center;">
-                                <i class="fas fa-envelope" style="font-size: 2rem; color: #ff7f50; margin-bottom: 0.5rem;"></i>
-                                <p>Mail Check</p>
-                            </div>
+                <div class="give-form-wrapper fade-in" id="give-form-wrapper">
+                    <form id="giveForm" class="give-form">
+                        <h3 style="margin-bottom: 1.5rem; color: #ff7f50;">Secure Giving Form</h3>
+                        <div class="form-group">
+                            <label for="giverName">Full Name</label>
+                            <input type="text" id="giverName" name="giverName" required>
                         </div>
-                        <a href="#" class="cta-button cta-primary" style="display: inline-block; margin-bottom: 1rem;">Give Now</a>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">All donations are secure and tax-deductible</p>
-                    </div>
+                        <div class="form-group">
+                            <label for="giverEmail">Email Address</label>
+                            <input type="email" id="giverEmail" name="giverEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount (UGX)</label>
+                            <input type="number" id="amount" name="amount" min="1000" step="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="method">Giving Method</label>
+                            <select id="method" name="method" required>
+                                <option value="">Select Method</option>
+                                <option value="Mobile Money">Mobile Money</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Cash">Cash (In Person)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cta-button cta-primary" style="width:100%;margin-top:1rem;">Give Now</button>
+                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:1rem;">All donations are secure and confidential.</p>
+                    </form>
+                </div>
+                <div id="give-thankyou" class="fade-in" style="display:none; text-align:center; margin-top:2rem;">
+                    <h3 style="color:#ff7f50;">Thank You for Your Generosity!</h3>
+                    <p>We appreciate your support for Rest Church. God bless you!</p>
+                    <button onclick="resetGiveForm()" class="cta-button cta-secondary" style="margin-top:1rem;">Give Again</button>
+                </div>
+                <div class="give-info" style="margin-top:2rem; text-align:center;">
+                    <h4 style="color:#fff; margin-bottom:0.5rem;">Other Ways to Give</h4>
+                    <p style="color:rgba(255,255,255,0.8);margin-bottom:0.5rem;">
+                        <strong>Mobile Money:</strong> 0757885829 (MTN) / 0740998393 (Airtel)<br>
+                        <strong>Bank:</strong> Rest Church, Stanbic Bank, Acc: ---Still In process<br>
+                        <strong>In Person:</strong> During any service or at the church office
+                    </p>
                 </div>
             </div>
-        </section>
+    </section>
+    <!-- Decorative SVG wave bottom -->
+    <div style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1; pointer-events: none;">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px;display:block;transform:rotate(180deg);">
+            <path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path>
+        </svg>
+    </div>
 
         <!-- Prayer Requests -->
         <section class="section" style="background: #f8f9fa;">
@@ -1226,7 +1370,7 @@
                 <div class="leadership-grid">
                     <div class="leader-card fade-in">
                         <div class="leader-image">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_f7731583.jpg"alt="Lead Pastor">
+                            <img src="images/image-sum34.jpg"alt="Lead Pastor">
                         </div>
                         <div class="leader-info">
                             <h3>Pastor Muwayi Faizo</h3>
@@ -1236,7 +1380,7 @@
                     </div>
                     <div class="leader-card fade-in">
                         <div class="leader-image">
-                            <img src="images/WhatsApp Image 2025-06-12 at 11.51.49_d8ef2417.jpg" alt="Our Vision">
+                            <img src="images/imagesum-2.jpg" alt="Our Vision">
                         </div>
                         <div class="leader-info">
                             <h3>Our Vision</h3>
@@ -1259,10 +1403,10 @@
                     <div class="fade-in" style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
                         <div style="display: flex; align-items: center; margin-bottom: 1rem;">
                             <div style="width: 50px; height: 50px; background: #ff7f50; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 1rem; overflow: hidden;">
-                                <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_551448d1.jpg" alt="Jennifer Martinez" style="width: 100%; height: 100%; object-fit: cover;">
+                                <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h4>Jennifer Martinez</h4>
+                                <h4>Pius Mukisa</h4>
                                 <p style="color: rgba(255,255,255,0.7); margin: 0;">Member since 2022</p>
                             </div>
                         </div>
@@ -1274,7 +1418,7 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h4>David Thompson</h4>
+                                <h4>Pr. Prossy Mukabakama</h4>
                                 <p style="color: rgba(255,255,255,0.7); margin: 0;">Member since 2021</p>
                             </div>
                         </div>
@@ -1286,7 +1430,7 @@
                                 <i class="fas fa-user"></i>
                             </div>
                             <div>
-                                <h4>Lisa Chen</h4>
+                                <h4>Pr. Irihose Rogers</h4>
                                 <p style="color: rgba(255,255,255,0.7); margin: 0;">Member since 2020</p>
                             </div>
                         </div>
@@ -1311,7 +1455,7 @@
                         <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_551448d1.jpg" alt="Gallery Image 2">
                     </div>
                     <div class="gallery-item">
-                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="Gallery Image 3">
+                        <img src="images/imagesum-2.jpg" alt="Gallery Image 3">
                     </div>
                     <div class="gallery-item">
                         <img src="images/WhatsApp Image 2025-06-12 at 11.52.51_ea37b096.jpg" alt="Gallery Image 4">
@@ -1334,7 +1478,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
                                 <strong>Address</strong><br>
-                                123 Community Lane<br>
+                                Nkoko - Lugazi-Buikwe, District<br>
                                 Kampala,Uganda, Buikwe Lugazi
                             </div>
                         </div>
@@ -1343,12 +1487,6 @@
                             <div>
                                 <strong>Phone</strong><br>
                                 +256 123 456 789
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong><br>
                                 info@restchurch.ug
                             </div>
                         </div>
@@ -1402,16 +1540,16 @@
                 <a href="#events">Events</a>
                 <a href="#ministries">Ministries</a>
                 <a href="#">Plan Your Visit</a>
-                <a href="#">Give Online</a>
+                <a href="#give-online">Give Online</a>
             </div>
             <div class="footer-section">
                 <h3>Ministries</h3>
-                <a href="#">Kids Ministry</a>
-                <a href="#">Youth Ministry</a>
+                <a href="kids-ministry.html">Kids Ministry</a>
+                <a href="youth-ministry.html">Youth Ministry</a>
                 <a href="#">Small Groups</a>
-                <a href="#">Women's Ministry</a>
-                <a href="#">Men's Ministry</a>
-                <a href="#">Missions</a>
+                <a href="womens-ministry.html">Women's Ministry</a>
+                <a href="mens-ministry.html">Men's Ministry</a>
+                <a href="missions.html">Missions</a>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
@@ -1425,7 +1563,7 @@
             <div class="footer-section">
                 <h3>Connect</h3>
                 <p>123 Community Lane<br>Kampala, Central Region, Uganda</p>
-                <p>Phone: +256 123 456 789</p>
+                <p>Phone: +256 704 868 211</p>
                 <p>Email: restchurch37@gmail.com</p>
             </div>
         </div>
@@ -1493,6 +1631,17 @@ navUl.querySelectorAll('a').forEach(link => {
         }
     });
 });
-</script>
+
+document.getElementById('giveForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('give-form-wrapper').style.display = 'none';
+    document.getElementById('give-thankyou').style.display = 'block';
+});
+function resetGiveForm() {
+    document.getElementById('giveForm').reset();
+    document.getElementById('give-form-wrapper').style.display = 'block';
+    document.getElementById('give-thankyou').style.display = 'none';
+}
+    </script>
 </body>
 </html>
