@@ -478,6 +478,22 @@
             transition: transform 0.35s cubic-bezier(.77,0,.18,1), box-shadow 0.3s;
             box-shadow: 0 2px 12px rgba(44,85,48,0.06);
             will-change: transform;
+            animation: ministryZoom 2.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes ministryZoom {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 2px 12px rgba(44,85,48,0.06);
+            }
+            50% {
+                transform: scale(1.08) rotate(-2deg);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.13), 0 2px 12px rgba(44,85,48,0.08);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 2px 12px rgba(44,85,48,0.06);
+            }
         }
 
         .ministry-card:hover {
