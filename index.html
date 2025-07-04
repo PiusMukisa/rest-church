@@ -174,76 +174,220 @@ header.scrolled {
     background: linear-gradient(90deg, #fff 60%, #e9f5ee 100%);
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 1100px) {
-    .header-container {
-        padding: 1rem 1rem;
-    }
-    .logo {
-        margin: 0 1rem;
-    }
-}
+/* --- GLOBAL MOBILE RESPONSIVENESS --- */
 @media (max-width: 900px) {
-    .nav-left ul, .nav-right ul {
-        gap: 1.1rem;
+    .about-content,
+    .boom-about-layout {
+        flex-direction: column !important;
+        gap: 2rem !important;
+        align-items: stretch !important;
+        display: flex !important;
+    }
+    .about-image-boom,
+    .about-details {
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+    .about-image-boom img {
+        max-width: 100% !important;
+        border-radius: 18px !important;
+    }
+    .about-block {
+        padding: 1.2rem 1rem !important;
+    }
+    .service-times-container,
+    .sermon-series,
+    .events-grid,
+    .ministries-grid,
+    .leadership-grid,
+    .gallery-grid,
+    .footer-content,
+    .contact-content {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        display: grid !important;
     }
 }
+
+@media (max-width: 600px) {
+    .section {
+        padding: 40px 0.5rem !important;
+    }
+    .section-title h2 {
+        font-size: 1.5rem !important;
+    }
+    .section-title p {
+        font-size: 1rem !important;
+    }
+    .gallery-item {
+        height: 160px !important;
+    }
+    .give-form-wrapper {
+        padding: 1.2rem 0.5rem !important;
+        max-width: 98vw !important;
+    }
+    .leader-image img {
+        height: 180px !important;
+    }
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .footer-section {
+        padding: 0.5rem 0 !important;
+    }
+    .hero {
+        padding: 80px 0.5rem 60px !important;
+        min-height: 40vh !important;
+    }
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    .hero .subtitle {
+        font-size: 1rem !important;
+    }
+    .cta-buttons {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+}
+
+/* Fix for mobile nav menu */
 @media (max-width: 768px) {
     .nav-left, .nav-right {
-        display: none;
+        display: none !important;
     }
     .mobile-menu {
-        display: block;
-        z-index: 1002;
+        display: block !important;
     }
     .header-container {
-        justify-content: space-between;
+        justify-content: space-between !important;
     }
     .logo {
-        margin: 0 auto;
+        margin: 0 auto !important;
     }
     .mobile-nav-active .nav-left,
     .mobile-nav-active .nav-right {
         display: flex !important;
-        position: fixed;
+        position: fixed !important;
         top: 0;
         left: 0;
-        flex-direction: column;
-        width: 100vw;
-        height: 100vh;
-        background: linear-gradient(120deg, #2c5530 80%, #ff7f50 100%);
-        align-items: center;
-        justify-content: center;
-        z-index: 1001;
+        flex-direction: column !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: linear-gradient(120deg, #2c5530 80%, #ff7f50 100%) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 1001 !important;
         animation: mobileMenuFadeIn 0.5s;
     }
     .mobile-nav-active .nav-left ul,
     .mobile-nav-active .nav-right ul {
-        flex-direction: column;
-        gap: 2.2rem;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.3rem;
-    }
-    .mobile-nav-active .nav-left ul li a,
-    .mobile-nav-active .nav-right ul li a {
-        color: #fff;
-        background: none;
-        padding: 14px 0;
-        font-weight: 700;
-        border-radius: 0;
-        box-shadow: none;
-        text-shadow: 0 2px 8px rgba(44,85,48,0.10);
-    }
-    .mobile-nav-active .nav-left ul li a:hover,
-    .mobile-nav-active .nav-right ul li a:hover {
-        color: #ff7f50;
-        background: none;
+        flex-direction: column !important;
+        gap: 2.2rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.3rem !important;
     }
 }
-@keyframes mobileMenuFadeIn {
-    from { opacity: 0; transform: scale(0.97);}
-    to { opacity: 1; transform: scale(1);}
+        /* --- ABOUT US BOOM LAYOUT --- */
+.boom-about-layout {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-image-boom {
+    position: relative;
+    flex: 1 1 340px;
+    min-width: 280px;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.about-image-boom img {
+    width: 100%;
+    max-width: 370px;
+    border-radius: 30px;
+    box-shadow: 0 12px 48px 0 rgba(255,127,80,0.25), 0 2px 12px rgba(44,85,48,0.10);
+    border: 6px solid #fff;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(.77,0,.18,1), box-shadow 0.5s;
+    background: #fff;
+}
+.about-image-boom img:hover {
+    transform: scale(1.07) rotate(-2deg);
+    box-shadow: 0 24px 64px 0 rgba(255,127,80,0.35), 0 8px 32px rgba(44,85,48,0.18);
+}
+.about-img-bg {
+    content: '';
+    position: absolute;
+    top: 30px; left: 30px; right: -30px; bottom: -30px;
+    background: radial-gradient(circle at 60% 40%, #ffecd2 0%, #ff7f50 80%, transparent 100%);
+    border-radius: 40px;
+    z-index: 1;
+    filter: blur(18px);
+    opacity: 0.45;
+    pointer-events: none;
+    animation: aboutBoomGlow 4s ease-in-out infinite alternate;
+}
+@keyframes aboutBoomGlow {
+    0% { opacity: 0.35; filter: blur(18px);}
+    100% { opacity: 0.6; filter: blur(28px);}
+}
+
+.about-details {
+    flex: 2 1 400px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+.about-block {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44,85,48,0.07);
+    padding: 1.5rem 2rem;
+    margin-bottom: 0;
+    transition: box-shadow 0.3s;
+    border-left: 6px solid #ff7f50;
+}
+.about-block h3 {
+    color: #ff7f50;
+    margin-bottom: 0.7rem;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.about-block i {
+    color: #2c5530;
+    font-size: 1.1em;
+}
+.about-block ul, .about-block ol {
+    margin: 0 0 0.5rem 1.2rem;
+    color: #333;
+    font-size: 1.08rem;
+    line-height: 1.7;
+}
+.about-block p, .about-block li {
+    color: #444;
+    font-size: 1.08rem;
+}
+.about-faith-note {
+    margin-top: 1rem;
+    color: #555;
+    font-size: 1.02rem;
+    background: #f8f9fa;
+    border-left: 4px solid #ff7f50;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
 }
 
         /* Hero Section */
@@ -1164,42 +1308,58 @@ header.scrolled {
     <main>
         <!-- About Section -->
         <section id="about" class="section about">
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2>About Rest Church</h2>
-                    <p>Discover our heart, our mission, and what makes our community special</p>
+    <div class="container">
+        <div class="section-title fade-in">
+            <h2>About Us / Our Identity</h2>
+            <p style="font-size:1.15rem; color:#444; max-width:700px; margin:0 auto;">
+                Rest Church is a channel of elevating leaders to function holistically, equipping them to integrate discipleship and mission.
+            </p>
+        </div>
+        <div class="about-content fade-in boom-about-layout">
+            <div class="about-image-boom">
+                <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="Rest Church Identity">
+                <span class="about-img-bg"></span>
+            </div>
+            <div class="about-details">
+                <div class="about-block">
+                    <h3><i class="fas fa-bullseye"></i> Our Vision</h3>
+                    <p>
+                        Make disciples who make disciples, and leaders who raise up leaders, fueling a movement of exponential growth and impact.
+                    </p>
                 </div>
-                <div class="about-content fade-in">
-                    <div class="about-text">
-                        <p>Rest Church is more than a gathering place – we're a vibrant community dedicated to making disciples who love God, love people, and impact the world. Our foundation is built on the unwavering belief in the teachings of Jesus Christ, and we strive to create an environment where individuals can grow in their faith and find a true sense of belonging.</p>
-                        <p>We believe in the power of authentic community, meaningful worship, and practical biblical teaching that transforms lives. Whether you're taking your first steps in faith or have been walking with Jesus for years, you'll find a place to grow, serve, and make a difference.</p>
-                        <p>Our vision is to be a beacon of hope and a place of rest for all who seek spiritual nourishment. Join us as we journey together in faith, hope, and love, discovering the joy of a life dedicated to Christ.</p>
-                    </div>
-                    <div class="about-image">
-                        <img src="images/WhatsApp Image 2025-06-12 at 11.52.52_0c332759.jpg" alt="About Rest Church">
-                    </div>
+                <div class="about-block">
+                    <h3><i class="fas fa-rocket"></i> Mission</h3>
+                    <p>
+                        We evangelize, equip, and send.
+                    </p>
                 </div>
-
-                <!-- Core Values -->
-                <div class="values-grid fade-in">
-                    <div class="value-card">
-                        <i class="fas fa-bible"></i>
-                        <h3>Biblical Truth</h3>
-                        <p>We believe the Bible is God's Word and the foundation for all we believe and practice.</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fas fa-hands-helping"></i>
-                        <h3>Authentic Community</h3>
-                        <p>We're committed to building genuine relationships and supporting one another in life's journey.</p>
-                    </div>
-                    <div class="value-card">
-                        <i class="fas fa-globe-americas"></i>
-                        <h3>Global Impact</h3>
-                        <p>We're passionate about making a difference locally and around the world through service and missions.</p>
-                    </div>
+                <div class="about-block">
+                    <h3><i class="fas fa-gem"></i> Core Values</h3>
+                    <ul>
+                        <li>The Word</li>
+                        <li>Praying</li>
+                        <li>Discipleship</li>
+                        <li>Hospitality</li>
+                    </ul>
+                </div>
+                <div class="about-block">
+                    <h3><i class="fas fa-book"></i> Statement of Faith</h3>
+                    <ol>
+                        <li><strong>We are Cross Point:</strong> Our teachings are rooted in the transformative power of the cross.</li>
+                        <li><strong>The Trinity:</strong> We believe in one God, eternally existing in three persons - Father, Son, and Holy Spirit.</li>
+                        <li><strong>Jesus' Death and Resurrection:</strong> We believe Jesus Christ died for our sins, was buried, and rose again on the third day, securing our salvation.</li>
+                        <li><strong>Baptism:</strong> We believe in water baptism as a symbol of new life in Christ.</li>
+                        <li><strong>Spiritual Gifts:</strong> We believe in the manifestation of spiritual gifts, including speaking in tongues, as described in Scripture.</li>
+                        <li><strong>Stewardship:</strong> We believe in tithing and generous giving as an act of worship and obedience to God.</li>
+                    </ol>
+                    <p class="about-faith-note">
+                        We unite around these core beliefs and welcome all who share them. While we respect differing perspectives, our church's teachings and practices will remain grounded in these fundamental doctrines.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- Sermons Section -->
         <section id="sermons" class="section sermons">
@@ -1445,50 +1605,6 @@ header.scrolled {
                         <div class="form-group">
                             <label for="method">Giving Method</label>
                             <select id="method" name="method" required>
-                                <option value="">Select Method</option>
-                                <option value="Mobile Money">Mobile Money</option>
-                                <option value="Bank Transfer">Bank Transfer</option>
-                                <option value="Cash">Cash (In Person)</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="cta-button cta-primary" style="width:100%;margin-top:1rem;">Give Now</button>
-                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top:1rem;">All donations are secure and confidential.</p>
-                    </form>
-                </div>
-                <div id="give-thankyou" class="fade-in" style="display:none; text-align:center; margin-top:2rem;">
-                    <h3 style="color:#ff7f50;">Thank You for Your Generosity!</h3>
-                    <p>We appreciate your support for Rest Church. God bless you!</p>
-                    <button onclick="resetGiveForm()" class="cta-button cta-secondary" style="margin-top:1rem;">Give Again</button>
-                </div>
-                <div class="give-info" style="margin-top:2rem; text-align:center;">
-                    <h4 style="color:#fff; margin-bottom:0.5rem;">Other Ways to Give</h4>
-                    <p style="color:rgba(255,255,255,0.8);margin-bottom:0.5rem;">
-                        <strong>Mobile Money:</strong> 0757885829 (MTN) / 0740998393 (Airtel)<br>
-                        <strong>Bank:</strong> Rest Church, Stanbic Bank, Acc: ---Still In process<br>
-                        <strong>In Person:</strong> During any service or at
-                    </p>
-                </div>
-            </div>
-    </section>
-    <!-- Decorative SVG wave bottom -->
-    <div style="position: absolute; bottom: 0; left: 0; width: 100%; z-index: 1; pointer-events: none;">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:80px;display:block;transform:rotate(180deg);">
-            <path fill="#fff" fill-opacity="0.18" d="M0,80 C360,160 1080,0 1440,80 L1440,0 L0,0 Z"></path>
-        </svg>
-    </div>
-
-        <!-- Prayer Requests -->
-        <section class="section" style="background: #f8f9fa;">
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2>Prayer Requests</h2>
-                    <p>We believe in the power of prayer and would be honored to pray for you</p>
-                </div>
-                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                    <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                        <i class="fas fa-praying-hands" style="font-size: 3rem; color: #ff7f50; margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 1rem; color: #2c5530;">Submit a Prayer Request</h3>
-                        <p style="margin-bottom: 2rem; color: #666;">Our prayer team commits to praying for every request submitted. Your request will be kept confidential.</p>
                         <a href="#" class="cta-button cta-primary">Submit Prayer Request</a>
                     </div>
                 </div>
@@ -1752,7 +1868,6 @@ mobileMenuBtn.addEventListener('click', () => {
         barsIcon.style.display = 'none';
         timesIcon.style.display = '';
         navLeft.style.display = 'flex';
-        navRight.style.display = 'flex';
     } else {
         barsIcon.style.display = '';
         timesIcon.style.display = 'none';
