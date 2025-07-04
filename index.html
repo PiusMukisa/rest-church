@@ -32,19 +32,33 @@
         }
 
         .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 1rem 2rem;
+            position: relative;
         }
-
+        .nav-left, .nav-right {
+            flex: 1;
+        }
+        .nav-left ul, .nav-right ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            justify-content: flex-end;
+        }
+        .nav-right ul {
+            justify-content: flex-start;
+        }
         .logo {
+            flex: 0 0 auto;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
+            justify-content: center;
+            margin: 0 2rem;
+            z-index: 2;
         }
 
         .logo-img {
@@ -663,65 +677,51 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-container {
+                padding: 1rem;
+            }
+            .nav-left ul, .nav-right ul {
+                gap: 1rem;
+            }
+            .logo {
+                margin: 0 1rem;
+            }
+        }
         @media (max-width: 768px) {
+            .nav-left, .nav-right {
+                display: none;
+            }
             .mobile-menu {
                 display: block;
+                z-index: 1002;
             }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
+            .header-container {
+                justify-content: space-between;
+            }
+            .logo {
+                margin: 0 auto;
+            }
+            .mobile-nav-active .nav-left,
+            .mobile-nav-active .nav-right {
+                display: flex !important;
                 position: fixed;
                 top: 0;
                 left: 0;
-                width: 100%;
+                flex-direction: column;
+                width: 100vw;
                 height: 100vh;
                 background: rgba(44, 85, 48, 0.95);
-                backdrop-filter: blur(10px);
                 align-items: center;
                 justify-content: center;
-                gap: 2.5rem;
                 z-index: 1001;
-                transform: translateY(-100%);
-                transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             }
-
-            nav ul.active {
-                display: flex;
-                transform: translateY(0);
-            }
-
-            nav ul li a {
-                color: white;
-                font-size: 2rem;
-            }
-
-            .mobile-menu {
-                z-index: 1002;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cta-buttons {
+            .mobile-nav-active .nav-left ul,
+            .mobile-nav-active .nav-right ul {
                 flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .section {
-                padding: 60px 1rem;
-            }
-
-            .header-container {
-                display: flex;
-                padding: 1rem;
+                align-items: center;
+                justify-content: center;
             }
         }
 
@@ -983,15 +983,19 @@
     
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
-                <img src="images/logo-image.png" alt="Rest Church Logo" class="logo-img-large">
-            </a>
-            <nav>
+            <nav class="nav-left">
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#sermons">Sermons</a></li>
                     <li><a href="#live">Live</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="logo">
+                <img src="images/logo-image.png" alt="Rest Church Logo" class="logo-img-large">
+            </a>
+            <nav class="nav-right">
+                <ul>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#ministries">Ministries</a></li>
                     <li><a href="#leadership">Leadership</a></li>
@@ -1585,11 +1589,11 @@
         </div>
         
         <div class="social-links">
-            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61572500561513" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/restchurchlugazi/" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@restchurch469" title="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://chat.whatsapp.com/DepXVAwGvoeCIz4rtIYZjL?mode=r_c" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
         
         <div class="footer-bottom">
@@ -1621,29 +1625,36 @@ setInterval(changeHeroBg, 4000); // Change every 4 seconds
 
 // Hamburger menu toggle for mobile nav
 const mobileMenuBtn = document.querySelector('.mobile-menu');
-const navUl = document.querySelector('nav ul');
+const headerContainer = document.querySelector('.header-container');
+const navLeft = document.querySelector('.nav-left');
+const navRight = document.querySelector('.nav-right');
 const barsIcon = mobileMenuBtn.querySelector('.fa-bars');
 const timesIcon = mobileMenuBtn.querySelector('.fa-times');
 
 mobileMenuBtn.addEventListener('click', () => {
-    navUl.classList.toggle('active');
-    // Toggle icons
-    if (navUl.classList.contains('active')) {
+    headerContainer.classList.toggle('mobile-nav-active');
+    if (headerContainer.classList.contains('mobile-nav-active')) {
         barsIcon.style.display = 'none';
         timesIcon.style.display = '';
+        navLeft.style.display = 'flex';
+        navRight.style.display = 'flex';
     } else {
         barsIcon.style.display = '';
         timesIcon.style.display = 'none';
+        navLeft.style.display = '';
+        navRight.style.display = '';
     }
 });
 
-// Optional: Close menu when a link is clicked (on mobile)
-navUl.querySelectorAll('a').forEach(link => {
+// Close menu when a link is clicked (on mobile)
+document.querySelectorAll('.nav-left a, .nav-right a').forEach(link => {
     link.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
-            navUl.classList.remove('active');
+            headerContainer.classList.remove('mobile-nav-active');
             barsIcon.style.display = '';
             timesIcon.style.display = 'none';
+            navLeft.style.display = '';
+            navRight.style.display = '';
         }
     });
 });
